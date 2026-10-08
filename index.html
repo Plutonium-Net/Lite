@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Plutonium Lite</title>
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Plutonium Lite">
 <meta property="og:title" content="Plutonium Lite">
-<meta property="og:description" content="The lite version of Plutonium Network, offering even more ways to access the platform.">
+<meta property="og:description" content="A lightweight way to access Plutonium when the usual domain is blocked.">
 <meta property="og:url" content="https://plutoniumnet.work/">
 <meta property="og:image" content="https://plutoniumnet.work/img/brand-logo.png">
 <meta property="og:image:secure_url" content="https://plutoniumnet.work/img/brand-logo.png">
@@ -15,177 +16,548 @@
 <meta property="og:image:width" content="398">
 <meta property="og:image:height" content="398">
 <meta property="og:image:alt" content="Plutonium Lite logo">
+
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Plutonium Lite">
-<meta name="twitter:description" content="The lite version of Plutonium Network, offering even more ways to access the platform.">
+<meta name="twitter:description" content="A lightweight way to access Plutonium when the usual domain is blocked.">
 <meta name="twitter:image" content="https://plutoniumnet.work/img/brand-logo.png">
-<meta name="theme-color" content="#e8175d">
+<meta name="theme-color" content="#000000">
+
 <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
 <style>
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #000;
-  color: #fff;
+:root {
+  --bg: #000;
+  --surface: rgba(255, 255, 255, .035);
+  --surface-hover: rgba(255, 255, 255, .055);
+  --border: rgba(255, 255, 255, .09);
+  --border-hover: rgba(255, 255, 255, .16);
+  --text: #fff;
+  --muted: #a0a0a0;
+  --subtle: #707070;
+  --pink: #e8175d;
+  --pink-soft: #f9a8c0;
+  --pink-dark: #971040;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
 body {
-  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 20px 80px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% -15%, rgba(232, 23, 93, .09), transparent 34rem),
+    var(--bg);
+  color: var(--text);
+  font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-.head {
+
+a {
+  color: inherit;
+}
+
+code,
+.file,
+.cdn-name,
+.cdn a {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.page {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 72px;
+}
+
+.header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin: 0 0 8px;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 64px;
 }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+}
+
 .logo {
-  display: block;
-  flex: 0 0 auto;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   object-fit: contain;
-  overflow: hidden;
+  flex: 0 0 auto;
 }
-h1 {
-  font-size: 28px;
-  margin: 0;
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -.01em;
 }
-h2 {
-  font-size: 18px;
-  margin: 0 0 8px;
+
+.brand-name span {
+  color: var(--muted);
+  font-weight: 450;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 11px;
+  border: 1px solid rgba(232, 23, 93, .28);
+  border-radius: 999px;
+  background: rgba(232, 23, 93, .07);
+  color: var(--pink-soft);
+  font-size: 12px;
   font-weight: 600;
 }
-p {
-  margin: 0 0 12px;
+
+.hero {
+  max-width: 720px;
+  margin-bottom: 42px;
 }
-a {
-  color: #fff;
-}
-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 14px;
-}
-.lead {
-  color: #bbb;
-  margin-bottom: 32px;
-}
-.warn {
-  border: 1px solid #666;
-  border-left-width: 3px;
-  border-radius: 6px;
-  padding: 14px 16px;
-  margin: 0 0 28px;
-}
-.warn-title {
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 13px;
+  color: var(--pink);
+  font-size: 12px;
   font-weight: 700;
-  margin: 0 0 6px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
-.warn p:last-child {
+
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--pink);
+  box-shadow: 0 0 10px rgba(232, 23, 93, .55);
+}
+
+h1 {
   margin: 0;
+  font-size: clamp(34px, 6vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -.045em;
+  font-weight: 700;
 }
+
+.hero p {
+  max-width: 650px;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.warning {
+  display: grid;
+  grid-template-columns: 3px 1fr;
+  overflow: hidden;
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.warning::before {
+  content: "";
+  background: var(--pink);
+}
+
+.warning-content {
+  padding: 17px 19px;
+}
+
+.warning-title {
+  margin: 0 0 3px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.warning p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 13px;
+  color: var(--subtle);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.section-label::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--border);
+}
+
 .card {
-  border: 1px solid #333;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-.file {
-  color: #999;
-  font-size: 14px;
+  position: relative;
   margin-bottom: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  transition:
+    background .18s ease,
+    border-color .18s ease,
+    transform .18s ease;
 }
+
+.card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.card-main {
+  padding: 21px 22px 19px;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(232, 23, 93, .3);
+  border-radius: 7px;
+  background: rgba(232, 23, 93, .08);
+  color: var(--pink-soft);
+  font: 600 11px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.file {
+  margin-top: 7px;
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.description {
+  max-width: 690px;
+  margin: 14px 0 17px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 ol {
   margin: 0;
   padding-left: 20px;
-}
-li {
-  margin-bottom: 6px;
-}
-.cdn {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #333;
+  color: #c5c5c5;
   font-size: 13px;
-  color: #999;
 }
+
+li {
+  padding-left: 3px;
+  margin-bottom: 5px;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  text-decoration-color: rgba(232, 23, 93, .5);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--pink-soft);
+  text-decoration-color: var(--pink);
+}
+
+.cdn {
+  margin-top: 19px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.cdn-label {
+  margin-bottom: 7px;
+  color: var(--subtle);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
 .cdn-row {
-  display: flex;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 10px;
   margin-bottom: 4px;
+  font-size: 11px;
 }
+
+.cdn-row:last-child {
+  margin-bottom: 0;
+}
+
 .cdn-name {
-  flex: 0 0 84px;
-  color: #ccc;
+  color: #b5b5b5;
 }
+
 .cdn a {
-  color: #ccc;
-  word-break: break-all;
+  min-width: 0;
+  color: #858585;
+  overflow-wrap: anywhere;
+}
+
+.cdn a:hover {
+  color: var(--pink-soft);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.footer-accent {
+  color: var(--pink);
+}
+
+@media (max-width: 600px) {
+  .page {
+    width: min(100% - 24px, 900px);
+    padding-top: 28px;
+  }
+
+  .header {
+    margin-bottom: 48px;
+  }
+
+  .badge {
+    display: none;
+  }
+
+  .hero {
+    margin-bottom: 32px;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .card-main {
+    padding: 18px;
+  }
+
+  .cdn-row {
+    grid-template-columns: 1fr;
+    gap: 1px;
+    margin-bottom: 10px;
+  }
+
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
 }
 </style>
 </head>
+
 <body>
+<main class="page">
 
-<header class="head">
-  <img class="logo" src="img/logo.png" alt="Plutonium Lite logo" width="48" height="48">  <h1>Plutonium Lite</h1>
-</header>
+  <header class="header">
+    <a class="brand" href="/" aria-label="Plutonium Lite home">
+      <img class="logo" src="https://cdn.jsdelivr.net/gh/Plutonium-Net/Plutonium@main/img/brand/logo.png" alt="Plutonium Lite" width="42" height="42">
+      <div class="brand-name">Plutonium <span>/ Lite</span></div>
+    </a>
 
-<div class="warn">
-  <p class="warn-title">Warning</p>
-  <p>These features do not work in Plutonium Lite: proxy, accounts, cloud gaming, backgrounds, AI chat, and virtual machines.</p>
-</div>
+    <div class="badge">LIGHTWEIGHT ACCESS</div>
+  </header>
 
-<p class="lead">Three ways to load Plutonium when the usual domain is blocked. Pick whichever one your setup allows, or link straight to a file through one of the hosts listed under each card.</p>
+  <section class="hero">
+    <div class="eyebrow">Plutonium Lite</div>
+    <h1>Plutonium, without the extra weight.</h1>
+    <p>
+      A lightweight way to load Plutonium when the usual domain is blocked.
+      Choose a format that works for your setup and get straight into the platform.
+    </p>
+  </section>
 
-<div class="card">
-  <h2>1. Single page</h2>
-  <p class="file">versions/plutonium.html</p>
-  <p>One self contained HTML file. Everything it needs is pulled at load time, so nothing else has to sit next to it.</p>
-  <ol>
-    <li>Open the file directly: <a href="versions/plutonium.html">plutonium.html</a>.</li>
-    <li>To share it, host the file anywhere or send the file itself.</li>
-    <li>Anyone who opens it gets the full app in a single tab.</li>
-  </ol>
-  <div class="cdn">
-    <div class="cdn-row"><span class="cdn-name">jsDelivr</span><a href="https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.html">https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.html</a></div>
-    <div class="cdn-row"><span class="cdn-name">githack</span><a href="https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.html">https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.html</a></div>
-    <div class="cdn-row"><span class="cdn-name">htmlpreview</span><a href="https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.html">https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.html</a></div>
-  </div>
-</div>
+  <section class="warning" aria-label="Feature limitations">
+    <div class="warning-content">
+      <p class="warning-title">Lite has a few limitations</p>
+      <p>Proxy, accounts, cloud gaming, backgrounds, AI chat, and virtual machines are not available in this version.</p>
+    </div>
+  </section>
 
-<div class="card">
-  <h2>2. Data URI</h2>
-  <p class="file">versions/plutonium.txt</p>
-  <p>The same page encoded as one long <code>data:</code> URI. Useful when you cannot open or host a file at all.</p>
-  <ol>
-    <li>Open <a href="versions/plutonium.txt">plutonium.txt</a> and copy the whole line.</li>
-    <li>Paste it into the browser address bar and press Enter.</li>
-    <li>Or save it as a bookmark so it is one click later.</li>
-  </ol>
-  <div class="cdn">
-    <div class="cdn-row"><span class="cdn-name">jsDelivr</span><a href="https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.txt">https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.txt</a></div>
-    <div class="cdn-row"><span class="cdn-name">githack</span><a href="https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.txt">https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.txt</a></div>
-    <div class="cdn-row"><span class="cdn-name">htmlpreview</span><a href="https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.txt">https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.txt</a></div>
-  </div>
-</div>
+  <div class="section-label">Access methods</div>
 
-<div class="card">
-  <h2>3. SVG wrapper</h2>
-  <p class="file">versions/plutonium.svg</p>
-  <p>The app wrapped in an SVG document. Handy where an image file is allowed but an HTML page is not.</p>
-  <ol>
-    <li>Open the file directly: <a href="versions/plutonium.svg">plutonium.svg</a>.</li>
-    <li>Or embed it like any other SVG.</li>
-    <li>It runs the same app inside the SVG viewport.</li>
-  </ol>
-  <div class="cdn">
-    <div class="cdn-row"><span class="cdn-name">jsDelivr</span><a href="https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.svg">https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.svg</a></div>
-    <div class="cdn-row"><span class="cdn-name">githack</span><a href="https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.svg">https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.svg</a></div>
-  </div>
-</div>
+  <section class="card">
+    <div class="card-main">
+      <div class="card-top">
+        <div>
+          <h2 class="card-title"><span class="number">01</span> Single page</h2>
+          <div class="file">versions/plutonium.html</div>
+        </div>
+      </div>
 
-<p class="lead">All three load the same build and share the same feature set. Each card lists three hosts for the same file. jsDelivr serves the HTML file as plain text, so use that link to download or copy, while the githack and htmlpreview links open the HTML file as a running page.</p>
+      <p class="description">
+        One self-contained HTML file. Everything it needs is pulled at load time,
+        so nothing else has to sit next to it.
+      </p>
 
+      <ol>
+        <li>Open the file directly: <a href="versions/plutonium.html">plutonium.html</a>.</li>
+        <li>Host the file anywhere or send the file itself.</li>
+        <li>Anyone who opens it gets the full Lite app in a single tab.</li>
+      </ol>
+
+      <div class="cdn">
+        <div class="cdn-label">Available hosts</div>
+        <div class="cdn-row">
+          <span class="cdn-name">jsDelivr</span>
+          <a href="https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.html">https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.html</a>
+        </div>
+        <div class="cdn-row">
+          <span class="cdn-name">githack</span>
+          <a href="https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.html">https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.html</a>
+        </div>
+        <div class="cdn-row">
+          <span class="cdn-name">htmlpreview</span>
+          <a href="https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.html">https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.html</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-main">
+      <div class="card-top">
+        <div>
+          <h2 class="card-title"><span class="number">02</span> Data URI</h2>
+          <div class="file">versions/plutonium.txt</div>
+        </div>
+      </div>
+
+      <p class="description">
+        The same page encoded as one long <code>data:</code> URI. Useful when you
+        cannot open or host a file at all.
+      </p>
+
+      <ol>
+        <li>Open <a href="versions/plutonium.txt">plutonium.txt</a> and copy the whole line.</li>
+        <li>Paste it into the browser address bar and press Enter.</li>
+        <li>Or save it as a bookmark so it is one click later.</li>
+      </ol>
+
+      <div class="cdn">
+        <div class="cdn-label">Available hosts</div>
+        <div class="cdn-row">
+          <span class="cdn-name">jsDelivr</span>
+          <a href="https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.txt">https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.txt</a>
+        </div>
+        <div class="cdn-row">
+          <span class="cdn-name">githack</span>
+          <a href="https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.txt">https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.txt</a>
+        </div>
+        <div class="cdn-row">
+          <span class="cdn-name">htmlpreview</span>
+          <a href="https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.txt">https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.txt</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-main">
+      <div class="card-top">
+        <div>
+          <h2 class="card-title"><span class="number">03</span> SVG wrapper</h2>
+          <div class="file">versions/plutonium.svg</div>
+        </div>
+      </div>
+
+      <p class="description">
+        The app wrapped in an SVG document. Handy where an image file is allowed
+        but an HTML page is not.
+      </p>
+
+      <ol>
+        <li>Open the file directly: <a href="versions/plutonium.svg">plutonium.svg</a>.</li>
+        <li>Embed it like any other SVG.</li>
+        <li>It runs the same app inside the SVG viewport.</li>
+      </ol>
+
+      <div class="cdn">
+        <div class="cdn-label">Available hosts</div>
+        <div class="cdn-row">
+          <span class="cdn-name">jsDelivr</span>
+          <a href="https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.svg">https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.svg</a>
+        </div>
+        <div class="cdn-row">
+          <span class="cdn-name">githack</span>
+          <a href="https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.svg">https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.svg</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>Plutonium Lite</span>
+    <span>Same build. <span class="footer-accent">Less overhead.</span></span>
+  </footer>
+
+</main>
 </body>
 </html>
