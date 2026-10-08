@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plutonium Lite</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Plutonium Lite">
+<meta property="og:title" content="Plutonium Lite">
+<meta property="og:description" content="The lite version of Plutonium Network, offering even more ways to access the platform.">
+<meta property="og:url" content="https://plutoniumnet.work/">
+<meta property="og:image" content="https://plutoniumnet.work/img/brand-logo.png">
+<meta property="og:image:secure_url" content="https://plutoniumnet.work/img/brand-logo.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="398">
+<meta property="og:image:height" content="398">
+<meta property="og:image:alt" content="Plutonium Lite logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plutonium Lite">
+<meta name="twitter:description" content="The lite version of Plutonium Network, offering even more ways to access the platform.">
+<meta name="twitter:image" content="https://plutoniumnet.work/img/brand-logo.png">
+<meta name="theme-color" content="#e8175d">
+<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+}
+body {
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+.head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 8px;
+}
+.logo {
+  display: block;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  overflow: hidden;
+}
+h1 {
+  font-size: 28px;
+  margin: 0;
+}
+h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+p {
+  margin: 0 0 12px;
+}
+a {
+  color: #fff;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+}
+.lead {
+  color: #bbb;
+  margin-bottom: 32px;
+}
+.warn {
+  border: 1px solid #666;
+  border-left-width: 3px;
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 0 0 28px;
+}
+.warn-title {
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.warn p:last-child {
+  margin: 0;
+}
+.card {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.file {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+ol {
+  margin: 0;
+  padding-left: 20px;
+}
+li {
+  margin-bottom: 6px;
+}
+.cdn {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #333;
+  font-size: 13px;
+  color: #999;
+}
+.cdn-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.cdn-name {
+  flex: 0 0 84px;
+  color: #ccc;
+}
+.cdn a {
+  color: #ccc;
+  word-break: break-all;
+}
+</style>
+</head>
+<body>
+
+<header class="head">
+  <img class="logo" src="img/logo.png" alt="Plutonium Lite logo" width="48" height="48">  <h1>Plutonium Lite</h1>
+</header>
+
+<div class="warn">
+  <p class="warn-title">Warning</p>
+  <p>These features do not work in Plutonium Lite: proxy, accounts, cloud gaming, backgrounds, AI chat, and virtual machines.</p>
+</div>
+
+<p class="lead">Three ways to load Plutonium when the usual domain is blocked. Pick whichever one your setup allows, or link straight to a file through one of the hosts listed under each card.</p>
+
+<div class="card">
+  <h2>1. Single page</h2>
+  <p class="file">versions/plutonium.html</p>
+  <p>One self contained HTML file. Everything it needs is pulled at load time, so nothing else has to sit next to it.</p>
+  <ol>
+    <li>Open the file directly: <a href="versions/plutonium.html">plutonium.html</a>.</li>
+    <li>To share it, host the file anywhere or send the file itself.</li>
+    <li>Anyone who opens it gets the full app in a single tab.</li>
+  </ol>
+  <div class="cdn">
+    <div class="cdn-row"><span class="cdn-name">jsDelivr</span><a href="https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.html">https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.html</a></div>
+    <div class="cdn-row"><span class="cdn-name">githack</span><a href="https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.html">https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.html</a></div>
+    <div class="cdn-row"><span class="cdn-name">htmlpreview</span><a href="https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.html">https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.html</a></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>2. Data URI</h2>
+  <p class="file">versions/plutonium.txt</p>
+  <p>The same page encoded as one long <code>data:</code> URI. Useful when you cannot open or host a file at all.</p>
+  <ol>
+    <li>Open <a href="versions/plutonium.txt">plutonium.txt</a> and copy the whole line.</li>
+    <li>Paste it into the browser address bar and press Enter.</li>
+    <li>Or save it as a bookmark so it is one click later.</li>
+  </ol>
+  <div class="cdn">
+    <div class="cdn-row"><span class="cdn-name">jsDelivr</span><a href="https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.txt">https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.txt</a></div>
+    <div class="cdn-row"><span class="cdn-name">githack</span><a href="https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.txt">https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.txt</a></div>
+    <div class="cdn-row"><span class="cdn-name">htmlpreview</span><a href="https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.txt">https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.txt</a></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>3. SVG wrapper</h2>
+  <p class="file">versions/plutonium.svg</p>
+  <p>The app wrapped in an SVG document. Handy where an image file is allowed but an HTML page is not.</p>
+  <ol>
+    <li>Open the file directly: <a href="versions/plutonium.svg">plutonium.svg</a>.</li>
+    <li>Or embed it like any other SVG.</li>
+    <li>It runs the same app inside the SVG viewport.</li>
+  </ol>
+  <div class="cdn">
+    <div class="cdn-row"><span class="cdn-name">jsDelivr</span><a href="https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.svg">https://cdn.jsdelivr.net/gh/Plutonium-Net/Lite@main/versions/plutonium.svg</a></div>
+    <div class="cdn-row"><span class="cdn-name">githack</span><a href="https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.svg">https://raw.githack.com/Plutonium-Net/Lite/main/versions/plutonium.svg</a></div>
+    <div class="cdn-row"><span class="cdn-name">htmlpreview</span><a href="https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.svg">https://htmlpreview.github.io/?https://github.com/Plutonium-Net/Lite/blob/main/versions/plutonium.svg</a></div>
+  </div>
+</div>
+
+<p class="lead">All three load the same build and share the same feature set. Each card lists three hosts for the same file. jsDelivr serves the HTML file as plain text, so use that link to download or copy, while the githack and htmlpreview links open the HTML file as a running page.</p>
+
+</body>
+</html>
